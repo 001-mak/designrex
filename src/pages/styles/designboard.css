@@ -1,0 +1,28 @@
+
+.navbar{
+    height: 60px;
+    border: 1px solid red;
+}
+.brand-name img{
+    width: 42px;
+}
+.brand-name h1{
+    font-family: logofont;
+    font-size: 24px;
+}
+.left-tool-bar{
+    border-radius: 20px;
+    box-shadow: 10px 10px 48px -21px rgba(0,0,0,0.5);
+}
+
+.tool{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.tool span{
+    margin-top: 3px;
+    font-size: 11px;
+    font-family: montserrat-bold;
+}

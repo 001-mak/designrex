@@ -1,0 +1,59 @@
+@font-face {
+    font-family: logofont;
+    src: url(../../../public/logofont.otf);
+}
+
+@font-face {
+    font-family: proximaBold;
+    src: url(../../../public/proximaBold.otf);
+}
+@font-face {
+    font-family: proxima;
+    src: url(../../../public/proximaRegular.otf);
+}
+
+@font-face {
+    font-family: montserrat-bold;
+    src: url(../../../public/Montserrat-Bold.ttf);
+}
+@font-face {
+    font-family: montserrat-regular;
+    src: url(../../../public/Montserrat-Regular.ttf);
+}
+
+@media (min-width: 992px) {
+    .navbar{
+        height: 80px;
+    }
+  }
+
+a.navbar-brand {
+    font-family: logofont;
+    font-size: 40px;
+}
+
+img.logo{
+    width: 65px;
+}
+.nav-item a{
+    font-family: proxima;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+@media (min-width: 992px) {
+    .signup{
+      background-color: rgb(0, 0, 0);
+      padding: 0 5px;
+      border-radius: 5px;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .signup{
+        background-color: rgb(0, 0, 0);
+        padding: 0 5px;
+        border-radius: 5px;
+        width: 100px;
+      }
+  }

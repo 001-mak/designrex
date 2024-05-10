@@ -1,0 +1,11 @@
+.toolbar-prop-container input{
+    width: 60px;
+}
+
+.toolbar-prop-container select{
+    width: 200px;
+}
+
+.toolbar-prop-container span{
+    display: inline;
+}
