@@ -7,9 +7,8 @@ function Canvas() {
   const [fillColor, setFillColor] = useState("red");
 
   return (
-    
-      <div className="canvas">
-        <Stage width='300' height='300'>
+      <div className="canvas bg-white">
+        <Stage width={300} height= {300}>
           <Layer>
             <Text
               text={text}

@@ -1,0 +1,17 @@
+
+.tool{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    cursor: pointer;
+    transition: all ease 0.3s;
+}
+.tool span{
+    margin-top: 3px;
+    font-size: 11px;
+    font-family: montserrat-bold;
+}
+.tool:hover{
+    color: rgb(95, 95, 95);
+}

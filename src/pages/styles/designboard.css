@@ -1,7 +1,7 @@
 
 .navbar{
     height: 60px;
-    border: 1px solid red;
+    /* border: 1px solid red; */
 }
 .brand-name img{
     width: 42px;
@@ -11,18 +11,49 @@
     font-size: 24px;
 }
 .left-tool-bar{
+    background-color: white;
     border-radius: 20px;
     box-shadow: 10px 10px 48px -21px rgba(0,0,0,0.5);
+    height: 100%;
 }
+
+.prop-container{
+    height: 60px;
+    border-radius: 10px;
+    box-shadow: 10px 10px 48px -21px rgba(0,0,0,0.8);   
+}
+
+
 
 .tool{
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    cursor: pointer;
+    transition: all ease 0.3s;
 }
 .tool span{
     margin-top: 3px;
     font-size: 11px;
     font-family: montserrat-bold;
+}
+.tool:hover{
+    color: rgb(95, 95, 95);
+}
+
+.toolbar-prop-container input.color-input{
+    width: 28px;
+}
+
+.toolbar-prop-container input.text-input{
+    width: 200px;
+}
+
+.toolbar-prop-container select{
+    width: 180px;
+}
+
+.toolbar-prop-container span{
+    display: inline;
 }
