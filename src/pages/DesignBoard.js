@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "./styles/designboard.css";
 
 import { Stage, Layer, Rect, Text, Transformer } from "react-konva";
@@ -12,9 +12,9 @@ import { IoText } from "react-icons/io5";
 import { ImBold } from "react-icons/im";
 import { FaItalic } from "react-icons/fa";
 import { MdOutlineFormatUnderlined } from "react-icons/md";
-import { MdDelete } from "react-icons/md";  
+import { MdDelete } from "react-icons/md";
 
-import {textInitialState} from '../utils/textUtils'
+import { textInitialState } from "../utils/textUtils";
 
 function DesignBoard() {
   const [texts, setTexts] = useState([]);
@@ -25,22 +25,35 @@ function DesignBoard() {
   const transformerRef = useRef();
   const stageRef = useRef();
   const currentEventRef = useRef();
+  const indexRef = useRef();
 
   function handleTextTool() {
+    transformerRef.current.nodes([]);
     currentEventRef.current = null;
+    indexRef.current = null;
     setTexts((texts) => [...texts, textInitialState]);
+    console.log(texts);
   }
 
   function OnClickText(e) {
-    currentEventRef.current=e
-    console.log(currentEventRef.current)
+    currentEventRef.current = e;
+    indexRef.current = e.target.index - 1;
+    // console.log(e)
     // *******FOR TEXT TOOL PROPERTIES******
-    setTextProps(e.target.attrs)
+    setTextProps(e.target.attrs);
 
     setShowTextProp(true);
     const target = e.currentTarget;
     transformerRef.current.nodes([target]);
   }
+
+  useEffect(() => {
+    // console.log(textProps);
+    const updatedTexts = [...texts];
+    updatedTexts[indexRef.current] = textProps;
+    setTexts(updatedTexts);
+  }, [textProps]);
+
   return (
     <>
       <div className="navbar row">
@@ -96,9 +109,8 @@ function DesignBoard() {
                           onChange={(e) => {
                             setTextProps({
                               ...textProps,
-                              textg: e.target.value
+                              text: e.target.value,
                             });
-
                           }}
                           className="form-control text-input mx-2 py-1 px-2"
                         />
@@ -111,8 +123,8 @@ function DesignBoard() {
                           onChange={(e) => {
                             setTextProps({
                               ...textProps,
-                              fontFamily: e.target.value}
-                            );
+                              fontFamily: e.target.value,
+                            });
                           }}
                         >
                           <option value="Arial">Arial</option>
@@ -133,8 +145,8 @@ function DesignBoard() {
                             onClick={() =>
                               setTextProps({
                                 ...textProps,
-                                fontSize: textProps.fontSize -= 1}
-                              )
+                                fontSize: (textProps.fontSize -= 1),
+                              })
                             }
                           >
                             -
@@ -145,8 +157,8 @@ function DesignBoard() {
                             onClick={() =>
                               setTextProps({
                                 ...textProps,
-                                fontSize: textProps.fontSize += 1}
-                              )
+                                fontSize: (textProps.fontSize += 1),
+                              })
                             }
                           >
                             +
@@ -160,8 +172,8 @@ function DesignBoard() {
                           onChange={(e) => {
                             setTextProps({
                               ...textProps,
-                              fill : e.target.value}
-                            );
+                              fill: e.target.value,
+                            });
                           }}
                         />
                         <p className="mt-3 ">Stroke: </p>
@@ -172,8 +184,8 @@ function DesignBoard() {
                           onChange={(e) => {
                             setTextProps({
                               ...textProps,
-                              stroke : e.target.value}
-                            );
+                              stroke: e.target.value,
+                            });
                           }}
                         />
                         <div className="d-flex align-items-center mx-2">
@@ -182,8 +194,8 @@ function DesignBoard() {
                             onClick={() =>
                               setTextProps({
                                 ...textProps,
-                                strokeWidth: textProps.strokeWidth -= 1}
-                              )
+                                strokeWidth: (textProps.strokeWidth -= 1),
+                              })
                             }
                           >
                             -
@@ -194,8 +206,8 @@ function DesignBoard() {
                             onClick={() =>
                               setTextProps({
                                 ...textProps,
-                                strokeWidth: textProps.strokeWidth += 1}
-                              )
+                                strokeWidth: (textProps.strokeWidth += 1),
+                              })
                             }
                           >
                             +
@@ -207,17 +219,72 @@ function DesignBoard() {
                             textProps.fontStyle === "normal"
                               ? setTextProps({
                                   ...textProps,
-                                  fontStyle : "bold"}
-                                )
+                                  fontStyle: "bold",
+                                })
                               : setTextProps({
-                                ...textProps,
-                                fontStyle : "normal"}
-                              );
+                                  ...textProps,
+                                  fontStyle: "normal",
+                                });
                           }}
                         />
-                        <FaItalic className="fs-6 m-2" />
-                        <MdOutlineFormatUnderlined className="fs-5 m-2" />
-                        <MdDelete className="fs-5 m-2 text-danger" />
+                        <FaItalic
+                          className="fs-6 m-2"
+                          onClick={() => {
+                            if (textProps.fontStyle === "bold") {
+                              setTextProps({
+                                ...textProps,
+                                fontStyle: "italic bold",
+                              });
+                            }
+                            if (textProps.fontStyle === "italic bold") {
+                              setTextProps({
+                                ...textProps,
+                                fontStyle: "bold",
+                              });
+                            }
+                            if (textProps.fontStyle === "italic") {
+                              setTextProps({
+                                ...textProps,
+                                fontStyle: "normal",
+                              });
+                            }
+                            if (textProps.fontStyle === "normal") {
+                              setTextProps({
+                                ...textProps,
+                                fontStyle: "italic",
+                              });
+                            }
+                          }}
+                        />
+                        <MdOutlineFormatUnderlined
+                          className="fs-5 m-2"
+                          onClick={() => {
+                            textProps.textDecoration === ""
+                              ? setTextProps({
+                                  ...textProps,
+                                  textDecoration: "underline",
+                                })
+                              : setTextProps({
+                                  ...textProps,
+                                  textDecoration: "",
+                                });
+                          }}
+                        />
+                        <MdDelete
+                          className="fs-5 m-2 text-danger"
+                          onClick={() => {
+                            texts.map((text, index) => {
+                              if (text.id === textProps.id) {
+                                const updatedTexts = [...texts];
+                                updatedTexts[index] = null;
+                                setTexts(updatedTexts);
+                                console.log("ok")
+                                transformerRef.current.nodes([]);
+                                // currentEventRef.current = null;
+                              }
+                            });
+                          }}
+                        />
                       </div>
                     </div>
                   </>
@@ -242,26 +309,34 @@ function DesignBoard() {
                         }}
                       />
 
-                      {texts.map((text, index) => {
-                        return (
-                          <Text
-                            key={index}
-                            id={text.id}
-                            name="text"
-                            text={text.text}
-                            fontSize={text.fontSize}
-                            fontFamily={text.fontFamily}
-                            fontStyle={text.fontStyle}
-                            textDecoration={text.textDecoration}
-                            fill={text.fill}
-                            stroke={text.stroke}
-                            strokeWidth={text.strokeWidth}
-                            align={text.align}
-                            draggable="true"
-                            onClick={OnClickText}
-                          />
-                        );
-                      })}
+                      {texts
+                        ? texts.map((text, index) => {
+                            return (
+                              <Text
+                                key={index}
+                                id={text.id}
+                                name="text"
+                                text={text.text}
+                                fontSize={text.fontSize}
+                                fontFamily={text.fontFamily}
+                                fontStyle={text.fontStyle}
+                                textDecoration={text.textDecoration}
+                                fill={text.fill}
+                                stroke={text.stroke}
+                                strokeWidth={text.strokeWidth}
+                                align={text.align}
+                                draggable="true"
+                                onClick={OnClickText}
+                                onMouseEnter={() =>
+                                  (document.body.style.cursor = "move")
+                                }
+                                onMouseLeave={() =>
+                                  (document.body.style.cursor = "default")
+                                }
+                              />
+                            );
+                          })
+                        : null}
                       <Transformer ref={transformerRef} />
                     </Layer>
                   </Stage>
