@@ -3,6 +3,7 @@
     height: 60px;
     /* border: 1px solid red; */
 }
+
 .brand-name img{
     width: 42px;
 }
@@ -10,6 +11,11 @@
     font-family: logofont;
     font-size: 24px;
 }
+
+.board{
+    position: relative;
+}
+
 .left-tool-bar{
     background-color: white;
     border-radius: 20px;
@@ -22,9 +28,6 @@
     border-radius: 10px;
     box-shadow: 10px 10px 48px -21px rgba(0,0,0,0.8);   
 }
-
-
-
 .tool{
     display: flex;
     align-items: center;
@@ -56,4 +59,16 @@
 
 .toolbar-prop-container span{
     display: inline;
+}
+
+.shapes-file{
+    position :absolute;
+    background-color: rgb(128, 14, 14);
+    border-radius: 20px;
+    box-shadow: 10px 10px 48px -21px rgba(0,0,0,0.5);
+    height: 500px;
+    width: 250px;
+    top: 30px;
+    left: 160px;
+    z-index: 1000;
 }

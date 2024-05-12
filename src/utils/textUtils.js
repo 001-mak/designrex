@@ -12,3 +12,20 @@ export const textInitialState = {
   strokeWidth: 0,
   align: "left",
 };
+
+export  function getTextInitialState(){
+  let id = uuidv4()
+
+  return{
+  id: id,
+  text: "Text Here",
+  fontSize: 50,
+  fontFamily: "Arial",
+  fontStyle: "normal",
+  textDecoration: "",
+  fill: "#7431F9",
+  stroke: "#ffffff",
+  strokeWidth: 0,
+  align: "left",
+  }
+}

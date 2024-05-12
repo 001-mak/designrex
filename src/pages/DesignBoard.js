@@ -14,7 +14,7 @@ import { FaItalic } from "react-icons/fa";
 import { MdOutlineFormatUnderlined } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
 
-import { textInitialState } from "../utils/textUtils";
+import { getTextInitialState } from "../utils/textUtils";
 
 function DesignBoard() {
   const [texts, setTexts] = useState([]);
@@ -31,14 +31,13 @@ function DesignBoard() {
     transformerRef.current.nodes([]);
     currentEventRef.current = null;
     indexRef.current = null;
-    setTexts((texts) => [...texts, textInitialState]);
-    console.log(texts);
+    setTexts((texts) => [...texts, getTextInitialState()]);
   }
 
   function OnClickText(e) {
     currentEventRef.current = e;
     indexRef.current = e.target.index - 1;
-    // console.log(e)
+    console.log(e);
     // *******FOR TEXT TOOL PROPERTIES******
     setTextProps(e.target.attrs);
 
@@ -61,13 +60,13 @@ function DesignBoard() {
           <img src="../../logo.png" alt="" />
           <h1 className="p-0 m-0 mt-2 ms-1">DesignRex</h1>
         </div>
-        <div className="board row bg-light">
+        <div className="board row bg-light m-0 py-4">
           {/* *************TOOLBAR************* */}
 
-          <div className="left-tool-bar ms-4 mt-4 col-lg-1 d-flex flex-column justify-content-center px-0 py-3">
+          <div className="left-tool-bar ms-4 mt-2 col-lg-1 d-flex flex-column justify-content-center px-0 py-3">
             {/* <Toolbar /> */}
 
-            <div className="my-4 tool">
+            <div className="my-4 tool templates">
               <MdCollectionsBookmark className="fs-4" />
               <span>Templates</span>
             </div>
@@ -91,11 +90,14 @@ function DesignBoard() {
               <IoMdDownload className="fs-4" />
               <span>Download</span>
             </div>
+            {/* ********TOOLBAR SIDE FILE**************** */}
+            <div className="shapes-file bg-white"></div>
           </div>
+
           <div className="col">
             <div className="row">
               {/* ************TOOLBAR PROPERTIES************** */}
-              <div className="col mt-4 prop-container mx-5 py-0 px-lg-5 bg-white">
+              <div className="col mt-2 prop-container mx-4 py-0 px-lg-5 bg-white">
                 {showTextProp ? (
                   <>
                     {/* <ToolbarProperties /> */}
@@ -275,12 +277,16 @@ function DesignBoard() {
                           onClick={() => {
                             texts.map((text, index) => {
                               if (text.id === textProps.id) {
-                                const updatedTexts = [...texts];
-                                updatedTexts[index] = null;
-                                setTexts(updatedTexts);
-                                console.log("ok")
+                                const newArray = texts.filter(
+                                  (_, i) => i !== index
+                                );
+                                setTexts(newArray);
+                                console.log(newArray);
                                 transformerRef.current.nodes([]);
-                                // currentEventRef.current = null;
+                                currentEventRef.current = null;
+                                indexRef.current = null;
+                                setShowTextProp(false);
+                                return;
                               }
                             });
                           }}
@@ -291,56 +297,54 @@ function DesignBoard() {
                 ) : null}
               </div>
 
-              <div className="col-lg-11 mx-5 my-4 d-flex align-itms-center justify-content-center">
+              <div className="canvas-zoom col-lg-11 mx-5 my-4 d-flex align-itms-center justify-content-center">
+                {/* *************CANVAS**************** */}
                 {/* <Canvas /> */}
+                <Stage width={700} height={700} ref={stageRef}>
+                  <Layer className="bg-white">
+                    <Rect
+                      height={700}
+                      width={700}
+                      fill="#ffffff"
+                      id="bg"
+                      onClick={() => {
+                        transformerRef.current.nodes([]);
+                        setShowTextProp(false);
+                        currentEventRef.current = null;
+                      }}
+                    />
 
-                <div className="canvas bg-white">
-                  <Stage width={500} height={300} ref={stageRef}>
-                    <Layer>
-                      <Rect
-                        height={300}
-                        width={500}
-                        fill="#ffffff"
-                        id="bg"
-                        onClick={() => {
-                          transformerRef.current.nodes([]);
-                          setShowTextProp(false);
-                          currentEventRef.current = null;
-                        }}
-                      />
-
-                      {texts
-                        ? texts.map((text, index) => {
-                            return (
-                              <Text
-                                key={index}
-                                id={text.id}
-                                name="text"
-                                text={text.text}
-                                fontSize={text.fontSize}
-                                fontFamily={text.fontFamily}
-                                fontStyle={text.fontStyle}
-                                textDecoration={text.textDecoration}
-                                fill={text.fill}
-                                stroke={text.stroke}
-                                strokeWidth={text.strokeWidth}
-                                align={text.align}
-                                draggable="true"
-                                onClick={OnClickText}
-                                onMouseEnter={() =>
-                                  (document.body.style.cursor = "move")
-                                }
-                                onMouseLeave={() =>
-                                  (document.body.style.cursor = "default")
-                                }
-                              />
-                            );
-                          })
-                        : null}
-                      <Transformer ref={transformerRef} />
-                    </Layer>
-                  </Stage>
-                </div>
+                    {texts
+                      ? texts.map((text, index) => {
+                          return (
+                            <Text
+                              key={index}
+                              id={text.id}
+                              name="text"
+                              text={text.text}
+                              fontSize={text.fontSize}
+                              fontFamily={text.fontFamily}
+                              fontStyle={text.fontStyle}
+                              textDecoration={text.textDecoration}
+                              fill={text.fill}
+                              stroke={text.stroke}
+                              strokeWidth={text.strokeWidth}
+                              align={text.align}
+                              draggable="true"
+                              onClick={OnClickText}
+                              onMouseEnter={() =>
+                                (document.body.style.cursor = "move")
+                              }
+                              onMouseLeave={() =>
+                                (document.body.style.cursor = "default")
+                              }
+                            />
+                          );
+                        })
+                      : null}
+                    <Transformer ref={transformerRef} />
+                  </Layer>
+                </Stage>
               </div>
             </div>
           </div>
