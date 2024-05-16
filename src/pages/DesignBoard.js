@@ -13,14 +13,16 @@ import { ImBold } from "react-icons/im";
 import { FaItalic } from "react-icons/fa";
 import { MdOutlineFormatUnderlined } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
+import { IoIosCloseCircleOutline } from "react-icons/io";
 
 import { getTextInitialState } from "../utils/textUtils";
 
 function DesignBoard() {
   const [texts, setTexts] = useState([]);
 
-  const [textProps, setTextProps] = useState();
+  const [textProps, setTextProps] = useState(null);
   const [showTextProp, setShowTextProp] = useState(false);
+  const [showSideFile, setShowSideFile] = useState(false);
 
   const transformerRef = useRef();
   const stageRef = useRef();
@@ -32,6 +34,12 @@ function DesignBoard() {
     currentEventRef.current = null;
     indexRef.current = null;
     setTexts((texts) => [...texts, getTextInitialState()]);
+  }
+
+  function handleShapeTool(){
+    if(!showSideFile){
+      setShowSideFile(true)
+    }
   }
 
   function OnClickText(e) {
@@ -71,7 +79,7 @@ function DesignBoard() {
               <span>Templates</span>
             </div>
 
-            <div className="my-4 tool">
+            <div className="my-4 tool shape-tool" onClick={handleShapeTool}>
               <FaShapes className="fs-4" />
               <span>Shapes</span>
             </div>
@@ -91,12 +99,25 @@ function DesignBoard() {
               <span>Download</span>
             </div>
             {/* ********TOOLBAR SIDE FILE**************** */}
-            <div className="shapes-file bg-white"></div>
+            <div>
+
+            {
+              showSideFile ? (<>
+              <div className="side-file">
+              <div className="shapes-file position-relative">
+                <IoIosCloseCircleOutline className="position-absolute top- end-0 m-2 fs-5 text-secondary"
+                onClick={()=>setShowSideFile(false)}
+                 />
+              </div>
+            </div> 
+            </>) : null
+            }
+            </div>
           </div>
 
           <div className="col">
             <div className="row">
-              {/* ************TOOLBAR PROPERTIES************** */}
+              {/* ************CODE FOR TOOLBAR PROPERTIES ************** */}
               <div className="col mt-2 prop-container mx-4 py-0 px-lg-5 bg-white">
                 {showTextProp ? (
                   <>
