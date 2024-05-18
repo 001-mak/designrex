@@ -23,9 +23,9 @@ function Toolbar() {
   }
 
   function handleShapeTool() {
-    if (!showSideFile) {
-      setShowSideFile(true);
-    }
+    // if (!showSideFile) {
+      setShowSideFile(!showSideFile);
+    // }
   }
 
 

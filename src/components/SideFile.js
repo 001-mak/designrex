@@ -10,13 +10,13 @@ import { IoMdStar } from "react-icons/io";
 import { useDesignContext } from "../context/DesignContext";
 import { getRectInitialState } from "../utils/rectangleUtils";
 function SideFile() {
-  const { setShowSideFile,rectangles,setRectangles, transformerRef, currentEventRef} = useDesignContext();
+  const {setAction, setShowSideFile,rects, setRects, transformerRef, currentEventRef} = useDesignContext();
 
   function handleRectTool(){
     transformerRef.current.nodes([]);
     currentEventRef.current = null;
-    setRectangles([...rectangles, getRectInitialState()]);
-    console.log(rectangles)
+    setAction('rectangle')
+    setRects([...rects, getRectInitialState()]);
   }
 
   return (

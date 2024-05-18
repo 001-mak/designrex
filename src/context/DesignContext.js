@@ -1,19 +1,21 @@
-import React, { createContext, useContext, useState, useRef } from 'react';
+import React, { createContext, useContext, useState, useRef } from "react";
 
 const DesignContext = createContext();
 
 export const useDesignContext = () => useContext(DesignContext);
 
 export const DesignProvider = ({ children }) => {
-
   //Text tool context data
   const [texts, setTexts] = useState([]);
   const [textProps, setTextProps] = useState(null);
-  const [showTextProp, setShowTextProp] = useState(false);
+
+  const [action, setAction] = useState('select');
   const [showSideFile, setShowSideFile] = useState(false);
-  
+
   //Rec
-  const [rectangles, setRectangles] = useState([]);
+  const [rects, setRects] = useState([]);
+  const [rectProps, setRectProps] = useState(null);
+
 
   const transformerRef = useRef();
   const currentEventRef = useRef();
@@ -26,15 +28,18 @@ export const DesignProvider = ({ children }) => {
         setTexts,
         textProps,
         setTextProps,
-        showTextProp,
-        setShowTextProp,
+        action,
+        setAction,
         showSideFile,
         setShowSideFile,
         transformerRef,
         currentEventRef,
         indexRef,
-        rectangles,
-        setRectangles
+        //*********rectangle context*********
+        rects,
+        setRects,
+        rectProps,
+        setRectProps,
       }}
     >
       {children}

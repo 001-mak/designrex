@@ -5,12 +5,12 @@ export function getRectInitialState() {
 
   return {
     id: id,
-    width:1000,
-    height:750,
+    width:120,
+    height:80,
     cornerRadius: 0,
     fill: "#D9230F",
     stroke: "#000000",
-    strokeWidth: 0,
+    strokeWidth: 1,
     opacity: 1,
     x:50,
     y:50,

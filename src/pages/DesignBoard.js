@@ -19,31 +19,33 @@ function DesignBoard() {
     setTexts,
     textProps,
     setTextProps,
-    showTextProp,
-    setShowTextProp,
+    action,
+    setAction,
     showSideFile,
     transformerRef,
     currentEventRef,
-    indexRef,
-    rectangles,
-    setRectangles,
+    rects,
+    setRects,
+    setRectProps,
+    rectProps,
   } = useDesignContext();
 
+  // *******FOR TEXT TOOL PROPERTIES******
   function OnClickText(e) {
     currentEventRef.current = e;
-    console.log(e.target.attrs);
-    // *******FOR TEXT TOOL PROPERTIES******
     setTextProps(e.target.attrs);
-
-    setShowTextProp(true);
+    setAction("text");
     const target = e.currentTarget;
     transformerRef.current.nodes([target]);
   }
 
-  function handleClickRect(e){
+  // *******FOR RECT TOOL PROPERTIES******
+  function onClickRect(e) {
+    setAction("rectangle");
     currentEventRef.current = e;
-    // *******FOR RECT TOOL PROPERTIES******
-
+    setRectProps(e.target.attrs);
+    const target = e.currentTarget;
+    transformerRef.current.nodes([target]);
   }
 
   useEffect(() => {
@@ -54,9 +56,17 @@ function DesignBoard() {
         setTexts(updatedTexts);
       }
     });
-    console.log(textProps);
-    console.log(texts);
   }, [textProps]);
+
+  useEffect(() => {
+    const updatedRects = [...rects];
+    rects.map((rect, index) => {
+      if (rect.id === rectProps.id) {
+        updatedRects[index] = rectProps;
+        setRects(updatedRects);
+      }
+    });
+  }, [rectProps]);
 
   return (
     <>
@@ -84,15 +94,7 @@ function DesignBoard() {
           <div className="col">
             <div className="row">
               {/* ************CODE FOR TOOLBAR PROPERTIES ************** */}
-              {showTextProp ? (
-                <>
-                  <div className="col mt-2 prop-container mx-4 py-0 px-lg-5 bg-white">
-                    <div className="toolbar-prop-container">
-                      <ToolbarProperties />
-                    </div>
-                  </div>
-                </>
-              ) : (
+              {action === "select" ? (
                 <div className="col mt-2  prop-container generate-ai mx-4 py-0 px-lg-5 d-flex align-items-center justif-content-center">
                   <div className="d-flex align-items-center">
                     <FaWandMagicSparkles className="text-white fs-2" />
@@ -107,6 +109,14 @@ function DesignBoard() {
                     </button>
                   </div>
                 </div>
+              ) : (
+                <>
+                  <div className="col mt-2 prop-container mx-4 py-0 px-lg-5 bg-white">
+                    <div className="toolbar-prop-container">
+                      <ToolbarProperties />
+                    </div>
+                  </div>
+                </>
               )}
 
               <div className="canvas-zoom col-lg-11 mx-5 my-4 d-flex align-itms-center justify-content-center">
@@ -121,63 +131,66 @@ function DesignBoard() {
                       id="bg"
                       onClick={() => {
                         transformerRef.current.nodes([]);
-                        setShowTextProp(false);
+                        setAction("select");
                         currentEventRef.current = null;
                       }}
                     />
 
-                    {texts
-                      ? texts.map((text, index) => {
-                          return (<>
-                            <Text
-                              key={index}
-                              id={text.id}
-                              name="text"
-                              text={text.text}
-                              fontSize={text.fontSize}
-                              fontFamily={text.fontFamily}
-                              fontStyle={text.fontStyle}
-                              textDecoration={text.textDecoration}
-                              fill={text.fill}
-                              stroke={text.stroke}
-                              strokeWidth={text.strokeWidth}
-                              align={text.align}
-                              draggable="true"
-                              onClick={OnClickText}
-                              onMouseEnter={() =>
-                                (document.body.style.cursor = "move")
-                              }
-                              onMouseLeave={() =>
-                                (document.body.style.cursor = "default")
-                              }
-                            />
-                            </>
-                          );
-                        })
-                      : null}
+                    {rects.map((rectangle, index) => {
+                      return (
+                        <>
+                          <Rect
+                            key={index}
+                            id={rectangle.id}
+                            height={rectangle.height}
+                            width={rectangle.width}
+                            cornerRadius={rectangle.cornerRadius}
+                            fill={rectangle.fill}
+                            stroke={rectangle.stroke}
+                            strokeWidth={rectangle.strokeWidth}
+                            opacity={rectangle.opacity}
+                            draggable="true"
+                            onClick={onClickRect}
+                            onMouseEnter={() =>
+                              (document.body.style.cursor = "move")
+                            }
+                            onMouseLeave={() =>
+                              (document.body.style.cursor = "default")
+                            }
+                          />
+                        </>
+                      );
+                    })}
 
-                    {rectangles.map((rect, index) => {
-                          return (
-                            <Rect
-                              key={index}
-                              id={rect.id}
-                              cornerRadius={rect.cornerRadius}
-                              fill={rect.fill}
-                              stroke={rect.stroke}
-                              strokeWidth={rect.strokeWidth}
-                              opacity={rect.opacity}
-                              draggable="true"
-                              onClick={handleClickRect}
-                              onMouseEnter={() =>
-                                (document.body.style.cursor = "move")
-                              }
-                              onMouseLeave={() =>
-                                (document.body.style.cursor = "default")
-                              }
-                            />
-                          );
-                        })
-                     }
+                    {texts.map((text, index) => {
+                      return (
+                        <>
+                          <Text
+                            key={index}
+                            id={text.id}
+                            name="text"
+                            text={text.text}
+                            fontSize={text.fontSize}
+                            fontFamily={text.fontFamily}
+                            fontStyle={text.fontStyle}
+                            textDecoration={text.textDecoration}
+                            fill={text.fill}
+                            stroke={text.stroke}
+                            strokeWidth={text.strokeWidth}
+                            align={text.align}
+                            draggable="true"
+                            onClick={OnClickText}
+                            onMouseEnter={() =>
+                              (document.body.style.cursor = "move")
+                            }
+                            onMouseLeave={() =>
+                              (document.body.style.cursor = "default")
+                            }
+                          />
+                        </>
+                      );
+                    })}
+
                     <Transformer ref={transformerRef} />
                   </Layer>
                 </Stage>
