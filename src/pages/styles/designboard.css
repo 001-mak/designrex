@@ -46,10 +46,10 @@
     color: rgb(95, 95, 95);
 }
 
-/* .prop-container{
+.generate-ai{
     background: rgb(0,54,89);
-background: linear-gradient(135deg, rgb(0, 42, 70) 0%, rgba(0,0,0,1) 78%);
-} */
+    background: linear-gradient(135deg, rgb(48, 0, 70) 0%, rgba(0,0,0,1) 78%);
+}
 
 .toolbar-prop-container input.color-input{
     width: 28px;
@@ -67,14 +67,3 @@ background: linear-gradient(135deg, rgb(0, 42, 70) 0%, rgba(0,0,0,1) 78%);
     display: inline;
 }
 
-.side-file{
-    position :absolute;
-    background-color: rgb(255, 255, 255);
-    border-radius: 20px;
-    box-shadow: 10px 10px 48px -21px rgba(0,0,0,0.5);
-    height: 500px;
-    width: 280px;
-    top: 30px;
-    left: 160px;
-    z-index: 1000;
-}

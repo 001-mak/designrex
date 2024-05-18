@@ -1,0 +1,24 @@
+.shapes{
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+.shape-icon{
+    font-size: 100px;
+    color: gray;
+    margin: 10px;
+}
+
+.side-file{
+    position :absolute;
+    background-color: rgb(255, 255, 255);
+    border-radius: 20px;
+    box-shadow: 10px 10px 48px -21px rgba(0,0,0,0.5);
+    height: 500px;
+    width: 280px;
+    top: 30px;
+    left: 160px;
+    z-index: 1000;
+}
