@@ -16,10 +16,14 @@ export const DesignProvider = ({ children }) => {
   const [rects, setRects] = useState([]);
   const [rectProps, setRectProps] = useState(null);
 
+  //image
+  const [images, setImages] = useState([]);
+
 
   const transformerRef = useRef();
   const currentEventRef = useRef();
   const indexRef = useRef();
+  const stageRef = useRef();
 
   return (
     <DesignContext.Provider
@@ -40,6 +44,11 @@ export const DesignProvider = ({ children }) => {
         setRects,
         rectProps,
         setRectProps,
+        //******image context******
+        images,
+        setImages,
+        //stage*******
+        stageRef,
       }}
     >
       {children}

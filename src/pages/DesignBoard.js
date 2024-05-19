@@ -1,7 +1,7 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useRef, useEffect } from "react";
 import "./styles/designboard.css";
 
-import { Stage, Layer, Rect, Text, Transformer } from "react-konva";
+import { Stage, Layer, Rect, Text, Image, Transformer } from "react-konva";
 
 import Toolbar from "../components/Toolbar";
 import SideFile from "../components/SideFile";
@@ -12,7 +12,6 @@ import { useDesignContext } from "../context/DesignContext";
 import { FaWandMagicSparkles } from "react-icons/fa6";
 
 function DesignBoard() {
-  const stageRef = useRef();
 
   const {
     texts,
@@ -28,6 +27,8 @@ function DesignBoard() {
     setRects,
     setRectProps,
     rectProps,
+    images,
+    stageRef,
   } = useDesignContext();
 
   // *******FOR TEXT TOOL PROPERTIES******
@@ -44,6 +45,12 @@ function DesignBoard() {
     setAction("rectangle");
     currentEventRef.current = e;
     setRectProps(e.target.attrs);
+    const target = e.currentTarget;
+    transformerRef.current.nodes([target]);
+  }
+
+  function onClickImage(e) {
+    setAction("upload");
     const target = e.currentTarget;
     transformerRef.current.nodes([target]);
   }
@@ -67,6 +74,7 @@ function DesignBoard() {
       }
     });
   }, [rectProps]);
+  useEffect(()=>{console.log(images)},[images])
 
   return (
     <>
@@ -162,6 +170,19 @@ function DesignBoard() {
                       );
                     })}
 
+                    {
+                    images.map((img)=>{
+                      console.log("img mapping")
+                    return <Image
+                    image={img.image}
+                    width={img.width}
+                    height={img.height}
+                    fill="#762329"
+                    draggable
+                    onClick={onClickImage}
+                    />
+                    }) 
+                    }
                     {texts.map((text, index) => {
                       return (
                         <>
