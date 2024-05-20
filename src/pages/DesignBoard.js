@@ -6,10 +6,10 @@ import { Stage, Layer, Rect, Text, Image, Transformer } from "react-konva";
 import Toolbar from "../components/Toolbar";
 import SideFile from "../components/SideFile";
 import ToolbarProperties from "../components/ToolbarProperties";
+import GenerateWithAi from "../components/GenerateWithAi";
 
 import { useDesignContext } from "../context/DesignContext";
 
-import { FaWandMagicSparkles } from "react-icons/fa6";
 
 function DesignBoard() {
 
@@ -104,18 +104,7 @@ function DesignBoard() {
               {/* ************CODE FOR TOOLBAR PROPERTIES ************** */}
               {action === "select" ? (
                 <div className="col mt-2  prop-container generate-ai mx-4 py-0 px-lg-5 d-flex align-items-center justif-content-center">
-                  <div className="d-flex align-items-center">
-                    <FaWandMagicSparkles className="text-white fs-2" />
-                    <input
-                      type="text"
-                      name="Generate with Ai"
-                      placeholder="Generate with Ai"
-                      className="form-control mx-2 py-2 px-2"
-                    />
-                    <button className="btn btn-warning fw-medium">
-                      Generate
-                    </button>
-                  </div>
+                  <GenerateWithAi/>
                 </div>
               ) : (
                 <>
