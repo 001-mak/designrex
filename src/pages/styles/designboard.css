@@ -1,8 +1,7 @@
 
 .navbar{
     height: 60px;
-    /* border: 1px solid red; */
-    
+    background-color: rgb(233, 233, 233);    
 }
 
 .brand-name img{
@@ -14,7 +13,8 @@
 }
 
 .board{
-    position: relative;
+    position: relative;   
+    background-color: rgb(231, 231, 231);
 }
 
 .left-tool-bar{

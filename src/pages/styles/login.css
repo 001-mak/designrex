@@ -1,0 +1,22 @@
+.page-container{
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    /* background-image: url(../../../public/); */
+}
+
+.right img{
+    width: 50px;
+}
+
+.right h1{
+    font-family: logofont;
+    margin-top: 18px;
+    margin-left: 5px;
+    font-size: 28px;
+}
+
+.right p{
+    font-family: montserrat-regular;
+    font-size: 14px;
+}

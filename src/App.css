@@ -1,3 +1,26 @@
+@font-face {
+  font-family: logofont;
+  src: url(../public/logofont.otf);
+}
+
+@font-face {
+  font-family: proximaBold;
+  src: url(../public/proximaBold.otf);
+}
+@font-face {
+  font-family: proxima;
+  src: url(../public/proximaRegular.otf);
+}
+
+@font-face {
+  font-family: montserrat-bold;
+  src: url(../public/Montserrat-Bold.ttf);
+}
+@font-face {
+  font-family: montserrat-regular;
+  src: url(../public/Montserrat-Regular.ttf);
+}
+
 .App {
   text-align: center;
 }
