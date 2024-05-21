@@ -1,59 +1,88 @@
 @font-face {
-    font-family: logofont;
-    src: url(../../../public/logofont.otf);
+  font-family: logofont;
+  src: url(../../../public/logofont.otf);
 }
 
 @font-face {
-    font-family: proximaBold;
-    src: url(../../../public/proximaBold.otf);
+  font-family: proximaBold;
+  src: url(../../../public/proximaBold.otf);
 }
 @font-face {
-    font-family: proxima;
-    src: url(../../../public/proximaRegular.otf);
+  font-family: proxima;
+  src: url(../../../public/proximaRegular.otf);
 }
 
 @font-face {
-    font-family: montserrat-bold;
-    src: url(../../../public/Montserrat-Bold.ttf);
+  font-family: montserrat-bold;
+  src: url(../../../public/Montserrat-Bold.ttf);
 }
 @font-face {
-    font-family: montserrat-regular;
-    src: url(../../../public/Montserrat-Regular.ttf);
+  font-family: montserrat-regular;
+  src: url(../../../public/Montserrat-Regular.ttf);
 }
-
-@media (min-width: 992px) {
-    .navbar{
-        height: 80px;
-    }
-  }
 
 a.navbar-brand {
-    font-family: logofont;
-    font-size: 40px;
+  font-family: logofont;
+  font-size: 40px;
 }
 
-img.logo{
-    width: 65px;
+img.logo {
+  width: 65px;
 }
-.nav-item a{
-    font-family: proxima;
-    font-weight: 600;
-    font-size: 14px;
+.nav-item a {
+  font-family: proxima;
+  font-weight: 600;
+  font-size: 14px;
 }
+
+@media (max-width: 768px) {
+  #navbarSupportedContent {
+    /* background-color: rgb(189, 167, 167); */
+    background: linear-gradient(90deg, rgba(253,208,32,1) 17%, #ffad13 100%);
+    /* margin-left: 235px; */
+    margin-top: 4px; 
+    /* width: 100%; */
+  }
+  .signup {
+    background-color: rgb(0, 0, 0);
+    padding: 0 5px;
+    border-radius: 5px;
+    width: 100px;
+  }
+}
+
+@media (min-width: 425px) and (max-width: 768px) {
+  .navbar {
+    height: 75px !important;
+    /* width: 100%; */
+    
+  }
+}
+
+@media (max-width: 425px) {
+  .navbar {
+    width: 100%;
+    margin-bottom: -1px !important;
+    /* box-sizing: content-box; */
+  }
+  img.logo {
+    width: 40px;
+  }
+  a.navbar-brand {
+    font-family: logofont;
+    font-size: 25px;
+  }
+}
+
+
 
 @media (min-width: 992px) {
-    .signup{
-      background-color: rgb(0, 0, 0);
-      padding: 0 5px;
-      border-radius: 5px;
-    }
+  .navbar {
+    height: 80px;
   }
-
-  @media (max-width: 576px) {
-    .signup{
-        background-color: rgb(0, 0, 0);
-        padding: 0 5px;
-        border-radius: 5px;
-        width: 100px;
-      }
+  .signup {
+    background-color: rgb(0, 0, 0);
+    padding: 0 5px;
+    border-radius: 5px;
   }
+}

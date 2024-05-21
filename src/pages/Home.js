@@ -15,9 +15,9 @@ function Home() {
   return (
     <>
       <Navbar />
-      <div className="hero-section row ">
-        <div className="col-lg-6 hero-left mx-lg-5 ps-lg-5">
-          <h1 className="hero-heading">Stand out with DesignRex</h1>
+      <div className="hero-section row p-sm-5 mt-sm-2 ">
+        <div className="col-lg-6 hero-left mx-lg-5 ps-lg-5 p-md-3">
+          <h1 className="hero-heading ">Stand out with DesignRex</h1>
           <p>
             Your all-in-one AI design app for making stunning social posts,
             images, flyers, and more. Dream it. Make it. Easy.
@@ -34,7 +34,7 @@ function Home() {
           </div>
         </div>
       </div>
-      <div className="categories my-lg-5 mx-lg-5">
+      {/* <div className="categories my-lg-5 mx-lg-5">
         <div className="row mx-lg-5">
           <div className="section-heading col-lg-12 p-3">
             <h1 className="heading">What will you create today?</h1>
@@ -105,9 +105,9 @@ function Home() {
             </div>
 
           </div>
-      </div>
-      <PricePlan/>
-      <Footer/>
+      </div> */}
+      {/* <PricePlan/> */}
+      {/* <Footer/> */}
     </>
   );
 }

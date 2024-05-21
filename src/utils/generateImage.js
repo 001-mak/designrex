@@ -11,5 +11,5 @@ export async function query(data) {
 	return result;
 }
 query({"inputs": "Astronaut riding a horse"}).then((response) => {
-	// Use image
+	console.log(response)
 });

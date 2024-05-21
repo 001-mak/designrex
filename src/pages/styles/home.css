@@ -37,10 +37,18 @@ h1.hero-heading{
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      padding:15px;
+      margin-top:10px;
     }
     .hero-left h1, .hero-left p{
         text-align: center;
+        margin: 5px;
+        padding: 8px;
     }
+    .hero-left h1{
+        font-size:46px;
+    }
+
   }
 .hero-right{
       overflow: hidden;
@@ -55,7 +63,7 @@ h1.hero-heading{
     .hero-section {
         height: auto;
     }
-  }
+}
 
 
  /* Define the animation 1*/
@@ -119,4 +127,7 @@ img.feature-img-1{
 
 img.feature-img-2{
     width: 350px;
+}
+
+@media (max-width: 768px) {
 }

@@ -7,7 +7,7 @@ function Navbar() {
       <nav className="navbar navbar-expand-lg bg-white bg-opacity-75 sticky-top">
         <div className="container-fluid">
           <div className="logo-container d-flex align-items-center justify-content-center">
-            <img className="logo ms-lg-5 mb-lg-2" src="../../logo.png" alt="" />
+            <img className="logo ms-lg-5" src="../../logo.png" alt="" />
             <a className="navbar-brand fw-bold px-2 lh-0" href="#">
               DesignRex
             </a>

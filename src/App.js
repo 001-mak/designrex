@@ -7,10 +7,10 @@ import { DesignProvider } from "./context/DesignContext";
 function App() {
   return (
     <>
-      {/* <Home/> */}
-      <DesignProvider>
+      <Home/>
+      {/* <DesignProvider>
         <DesignBoard />
-      </DesignProvider>
+      </DesignProvider> */}
     </>
   );
 }
