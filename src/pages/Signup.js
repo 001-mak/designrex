@@ -1,20 +1,32 @@
-import React from "react";
-import "./styles/auth.css";
+import React from 'react'
+import './styles/auth.css'
 
-function Login() {
+function Signup() {
   return (
     <>
       <div className="page-container m-0 px-5 row">
-        <div className="auth-card-container col-lg-6 p-md-5">
+        <div className="auth-card-container col-lg-6 p-md-2">
           <div className="auth-card p-md-5 m-md-5">
             <div className="card-heading">
-              <h1>Login</h1>
+              <h1>Sign Up</h1>
               <div>
-                <p>New User? Create an account</p>
+                <p>Already have an account? Login</p>
               </div>
             </div>
             <div className="auth-form">
               <form class="row g-3">
+                <div class="col-md-12">
+                  <label for="firstName" class="form-label">
+                    First Name
+                  </label>
+                  <input type="text" class="form-control" />
+                </div>
+                <div class="col-md-12">
+                  <label for="lastName" class="form-label">
+                    Last Name
+                  </label>
+                  <input type="text" class="form-control"/>
+                </div>
                 <div class="col-md-12">
                   <label for="inputEmail4" class="form-label">
                     Email
@@ -33,7 +45,7 @@ function Login() {
                 </div>
                 <div class="col-12">
                   <button type="submit" class="btn btn-primary">
-                    Sign in
+                    Sign up
                   </button>
                 </div>
               </form>
@@ -51,7 +63,7 @@ function Login() {
         </div>
       </div>
     </>
-  );
+  )
 }
 
-export default Login;
+export default Signup

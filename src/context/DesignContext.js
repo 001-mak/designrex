@@ -18,6 +18,7 @@ export const DesignProvider = ({ children }) => {
 
   //image
   const [images, setImages] = useState([]);
+  const [imgProps, setImgProps] = useState();
 
 
   const transformerRef = useRef();
@@ -47,6 +48,8 @@ export const DesignProvider = ({ children }) => {
         //******image context******
         images,
         setImages,
+        imgProps,
+        setImgProps,
         //stage*******
         stageRef,
       }}

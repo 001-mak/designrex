@@ -23,10 +23,35 @@ function ToolbarProperties() {
     setRects,
     rectProps,
     setRectProps,
+    images,
+    setImages,
+    imgProps,
+    setImgProps,
   } = useDesignContext();
 
   return (
     <>
+      {action === "image" && (
+        <>
+          <div className="d-flex align-items-center">
+            <button
+              className="btn btn-danger"
+              onClick={() => {
+                const updatedImages = images.filter(
+                  (img) => img.id !== imgProps.id
+                );
+                setImages(updatedImages);
+                transformerRef.current.nodes([]);
+                currentEventRef.current = null;
+                indexRef.current = null;
+                setAction("select");
+              }}
+            >
+              Delete
+            </button>
+          </div>
+        </>
+      )}
       {action === "text" ? (
         <div className="d-flex align-items-center">
           <input
@@ -244,7 +269,6 @@ function ToolbarProperties() {
                 })
               }
               disabled={rectProps.strokeWidth < 1}
-
             >
               -
             </button>

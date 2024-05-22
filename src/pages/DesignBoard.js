@@ -26,6 +26,7 @@ function DesignBoard() {
     setRectProps,
     rectProps,
     images,
+    setImgProps,
     stageRef,
   } = useDesignContext();
 
@@ -48,7 +49,10 @@ function DesignBoard() {
   }
 
   function onClickImage(e) {
-    setAction("upload");
+    console.log(e);
+    setImgProps(e.target.attrs);
+    setAction("image");
+
     const target = e.currentTarget;
     transformerRef.current.nodes([target]);
   }
@@ -72,13 +76,13 @@ function DesignBoard() {
       }
     });
   }, [rectProps]);
-  useEffect(() => {
-    console.log(images);
-  }, [images]);
+  // useEffect(() => {
+  //   console.log(images);
+  // }, [images]);
 
   return (
     <>
-      <div className="navbar row">
+      <div className="navbar row bg-white ">
         <div className="brand-name col ms-5 d-flex align-items-center">
           <img src="../../logo.png" alt="" />
           <h1 className="p-0 m-0 mt-2 ms-1">DesignRex</h1>
@@ -97,7 +101,7 @@ function DesignBoard() {
               <>
                 <SideFile />
               </>
-            ) }
+            )}
           </div>
         </div>
 
@@ -110,8 +114,8 @@ function DesignBoard() {
               </div>
             ) : (
               <>
-                <div className="col mt-2 prop-container mx-4 py-0 px-lg-5 bg-white">
-                  <div className="toolbar-prop-container">
+                <div className="col mt-2 prop-container d-flex align-items-center mx-4 py-0 px-lg-5 bg-white">
+                  <div className="toolbar-prop-container d-flex align-items-center">
                     <ToolbarProperties />
                   </div>
                 </div>
@@ -165,10 +169,10 @@ function DesignBoard() {
                     console.log("img mapping");
                     return (
                       <Image
+                        id={img.id}
                         image={img.image}
                         width={img.width}
                         height={img.height}
-                        fill="#762329"
                         draggable
                         onClick={onClickImage}
                       />

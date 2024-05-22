@@ -1,6 +1,9 @@
 import React, { useRef } from "react";
 import "./styles/toolbar.css";
 
+import { v4 as uuidv4 } from "uuid";
+
+
 import { MdCollectionsBookmark } from "react-icons/md";
 import { FaShapes } from "react-icons/fa";
 import { IoMdCloudUpload } from "react-icons/io";
@@ -45,17 +48,17 @@ function Toolbar() {
         const img = new window.Image();
         img.src = e.target.result;
         img.onload = () => {
-          const w = img.naturalWidth;
-          const h = img.naturalHeight;
+          const w = img.naturalWidth / 10;
+          const h = img.naturalHeight / 10;
           setImages((oldImages) => [
             ...oldImages,
             {
-              id: Date.now(),
+              id: uuidv4(),
               image: img,
-              width: 200,
-              height: 200,
-              x: 50,
-              y: 50,
+              width: w,
+              height: h,
+              x: 0,
+              y: 0,
             },
           ]);
         };
