@@ -96,7 +96,7 @@ function DesignBoard() {
           <Toolbar />
 
           {/* ********TOOLBAR SIDE FILE**************** */}
-          <div className="ms-2">
+          <div className="ms-1">
             {showSideFile && (
               <>
                 <SideFile />
