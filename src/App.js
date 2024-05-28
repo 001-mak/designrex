@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import DesignBoard from "./pages/DesignBoard";
+import ArtboardSize from "./components/ArtboardSize";
 import { DesignProvider } from "./context/DesignContext";
 
 function App() {
@@ -17,6 +18,11 @@ function App() {
         <Route path="/tool/artboard" element={
           <DesignProvider>
             <DesignBoard />
+          </DesignProvider>
+        } />
+        <Route path="/tool/artboard-size" element={
+          <DesignProvider>
+            <ArtboardSize/>
           </DesignProvider>
         } />
       </Routes>

@@ -5,6 +5,9 @@ const DesignContext = createContext();
 export const useDesignContext = () => useContext(DesignContext);
 
 export const DesignProvider = ({ children }) => {
+  //stage / artboard size
+  const [stageSize, setStageSize] = useState({});
+
   //Text tool context data
   const [texts, setTexts] = useState([]);
   const [textProps, setTextProps] = useState(null);
@@ -52,6 +55,8 @@ export const DesignProvider = ({ children }) => {
         setImgProps,
         //stage*******
         stageRef,
+        stageSize,
+        setStageSize,
       }}
     >
       {children}
