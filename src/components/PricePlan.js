@@ -11,7 +11,7 @@ function PricePlan() {
             <div className="col-12 col-sm-8 col-lg-6">
               {/* Section Heading*/}
               <div className="section-heading text-center wow fadeInUp" data-wow-delay="0.2s" style={{ visibility: "visible", animationDelay: "0.2s", animationName: "fadeInUp" }}>
-                <h6>Pricing Plans</h6>
+                <h6 className="pt-5">Pricing Plans</h6>
                 <h3>Let's find a way together</h3>
                 <p>Appland is completely creative, lightweight, clean & super responsive app landing page.</p>
                 <div className="line"></div>

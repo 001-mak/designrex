@@ -129,5 +129,35 @@ img.feature-img-2{
     width: 350px;
 }
 
-@media (max-width: 768px) {
+/* @media (min-width: 426px) and (max-width: 768px) {
+    .hero-section{
+        height: 800px;
+    }
+    .hero-left{
+        position: absolute;
+        top: 0;
+    }
+    .hero-right{
+        position: relative;
+        top: 10;
+    }   
+} */
+
+
+@media(max-width: 425px){
+    .categories-1{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .feature-content{
+        text-align: center;
+        margin: 20px;
+    }
+    .feature-img-1{
+        width: 410px !important; 
+    }
+    .feature-img-2{
+        width: 410px !important; 
+    }
 }

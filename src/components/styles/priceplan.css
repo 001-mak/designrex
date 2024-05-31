@@ -14,12 +14,18 @@
     background-color: #ffffff;
     padding: 3rem 4rem;
 }
+.price_plan_area{
+    margin-top: -100px;
+}
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
     .single_price_plan {
         padding: 3rem;
     }
 }
 @media only screen and (max-width: 575px) {
+    .price_plan_area{
+        margin-top: -100px;
+    }
     .single_price_plan {
         padding: 3rem;
     }

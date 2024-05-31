@@ -2,6 +2,7 @@
     flex: 0 0 auto;
 }
 
+
 a {
     text-decoration: none;
     background-color: transparent;
@@ -35,6 +36,14 @@ a {
 @media (max-width: 991.98px) {
     .footer-link-01 li+li {
         padding-top: .6rem
+    }
+}
+@media (max-width: 768px) {
+    .footer-bottom{
+        margin-top: -152px;
+    }
+    .footer-top{
+        padding-left: 150px;
     }
 }
 

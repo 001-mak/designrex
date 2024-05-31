@@ -34,12 +34,12 @@ function Home() {
           </div>
         </div>
       </div>
-      {/* <div className="categories my-lg-5 mx-lg-5">
+      <div className="categories my-lg-5 mx-lg-5">
         <div className="row mx-lg-5">
           <div className="section-heading col-lg-12 p-3">
             <h1 className="heading">What will you create today?</h1>
           </div>
-          <div className="row py-2  d-flex align-items-center justify-content-center">
+          <div className="categories-1 row py-2  d-flex align-items-center justify-content-center">
             <div className="col col-lg-2 category p-3 rounded d-flex flex-column align-items-center justify-content-center">
               <IoLogoCodepen className="category-icon fs-3" />
               <p className="category-name mt-1">Logo Design</p>
@@ -105,9 +105,9 @@ function Home() {
             </div>
 
           </div>
-      </div> */}
-      {/* <PricePlan/> */}
-      {/* <Footer/> */}
+      </div>
+      <PricePlan/>
+      <Footer/>
     </>
   );
 }
